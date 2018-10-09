@@ -1,0 +1,31 @@
+;OBJECTIVE: 4-digit packed to unpacked
+
+data SEGMENT
+    x dw 1234h
+    y dd ?
+data ENDS
+
+code SEGMENT
+    ASSUME: cs:code ds:data
+    
+    START: mov ax,data
+           mov ds,ax
+           mov ax,x
+           mov cx,2
+           mov si,0
+           mov di,0
+    next:  
+           mov al,byte ptr x[si]
+           mov ah,00h
+           shl ax,4
+           shr al,4
+           inc si
+           mov y[di],ax
+           add di,2
+           LOOP next
+           
+      code ENDS
+
+END start
+          
+            
