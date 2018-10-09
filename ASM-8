@@ -1,0 +1,19 @@
+;UNPACKED-PACKED
+data SEGMENT 
+    x DW 1324h
+data ENDS
+
+code SEGMENT
+    ASSUME: cs:code ds:data
+    START:
+            mov AX,data
+            mov DS,AX
+            
+            mov AX,x
+            AND AX,0F0Fh
+            shl AL,4
+            shr AX,4
+    code ENDS
+END START
+
+
