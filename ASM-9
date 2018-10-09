@@ -1,0 +1,25 @@
+;UNPACKED-PACKED (DOUBLEWORD)
+data SEGMENT
+    x dd 01020304h
+    y dw ?
+
+code SEGMENT
+    ASSUME: cs:code ds:data
+    start:
+          
+          mov ax,data
+          mov ds,ax
+          mov cx,2
+          mov si,0
+          mov di,0
+    next:
+          mov ax,word ptr x[si]
+          shl al,4
+          shr ax,4
+          add si,2
+          mov byte ptr y[di],al
+          add di,1
+          loop next
+    
+code ENDS
+END start
