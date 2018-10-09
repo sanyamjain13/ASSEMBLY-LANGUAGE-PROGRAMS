@@ -1,0 +1,21 @@
+;EXPRESSION-X+Y-Z+24
+DATA SEGMENT
+    x db 01h
+    y db 02h
+    z db 03h
+    res db ?
+DATA ends
+
+CODE segment
+    assume DS:DATA CS:CODE
+start:
+    MOV AX,DATA
+    MOV DS,AX
+    MOV AL,x
+    ADD AL,y
+    ADD AL,24
+    SUB AL,z
+    MOV res,AL
+
+CODE ends
+end start
