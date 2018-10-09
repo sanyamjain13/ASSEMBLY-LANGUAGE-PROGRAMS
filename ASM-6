@@ -1,0 +1,22 @@
+data SEGMENT
+    x db 23h
+data ENDS
+
+code SEGMENT
+    ASSUME: cs:code ds:data
+    
+    START:
+        mov ax,data
+        mov ds,ax
+        
+        mov al,x
+        mov ah,00h
+        shl ax,4
+        shr al,4
+    
+    code ENDS
+
+END START
+    
+
+
