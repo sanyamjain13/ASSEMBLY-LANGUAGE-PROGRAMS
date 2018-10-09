@@ -1,0 +1,22 @@
+DATA SEGMENT
+    array db 01h,02h,03h
+    sum db ?
+DATA ends
+
+CODE SEGMENT
+    assume DS:DATA CS:CODE
+start:
+    MOV AX,DATA
+    MOV DS,AX
+    MOV CX,3
+    MOV SI,0
+    MOV BX,OFFSET array
+    MOV AL,0
+next:
+    ADD AL,array[SI]
+    INC SI
+    LOOP next
+    
+  MOV sum,AL
+ CODE ends
+end start
