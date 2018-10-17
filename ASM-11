@@ -1,0 +1,27 @@
+DATA SEGMENT
+    ;ORG 50
+    arr dw 0000h,0001h,0002h,0003h,00004h 
+    x dw 5 dup(?)   
+
+DATA ENDS
+
+CODE SEGMENT
+    ASSUME: cs:CODE ds:DATA
+    START:
+            mov ax,DATA
+            mov ds,ax 
+            mov cx,4
+            mov si,0
+            mov di,0
+    COMP:
+            mov ax,arr[si]
+            not ax
+            add ax,1
+            mov x[di],ax
+            add si,2
+            add di,2
+            loop COMP    
+            
+    CODE ENDS
+
+END START
